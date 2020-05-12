@@ -1,0 +1,21 @@
+{
+  "name": "spotify-auth-manager-server",
+  "version": "1.0.0",
+  "description": "Get access and refresh tokens from spotify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Kappelle <daniel.kappelle@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "moment": "^2.25.3",
+    "mongodb": "^3.5.7",
+    "querystring": "^0.2.0"
+  }
+}

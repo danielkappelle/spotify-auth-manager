@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>Spotify Auth Manager</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>New authentication</h2>
+      <form (submit)="authorize()" [formGroup]="authForm">
+        <div class="form-group">
+          <label for="user">Username</label>
+          <input type="text" class="form-control" id="user" placeholder="Username" formControlName="user">
+          <small class="form-text text-muted">Choose a new username</small>
+        </div>
+        <div class="form-group">
+          <label for="pass">Password</label>
+          <input type="password" class="form-control" id="pass" placeholder="Password" formControlName="pass">
+        </div>
+        <div class="form-group">
+          <label>Scopes</label>
+          <div class="form-check" *ngFor="let scope of scopes">
+            <input class="form-check-input" type="checkbox" [value]="scope" [id]="scope"
+              (change)="onCheckChange($event)">
+            <label class="form-check-label" [for]="scope">
+              {{scope}}
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Authorize</button>
+      </form>
+    </div>
+
+    <div class="col-md-6">
+      <h2>Get access token</h2>
+      <form (submit)="getToken()" [formGroup]="requestForm" class="mb-3">
+        <div class="form-group">
+          <label for="user-request">Username</label>
+          <input type="text" class="form-control" id="user-request" placeholder="Username" formControlName="user">
+        </div>
+        <div class="form-group">
+          <label for="pass-request">Password</label>
+          <input type="password" class="form-control" id="pass-request" placeholder="Password" formControlName="pass">
+        </div>
+        <button type="submit" class="btn btn-primary">Get token</button>
+      </form>
+
+      <div *ngIf="accessToken">
+        <h3>Your token</h3>
+        <textarea class="form-control" rows="6">{{accessToken}}</textarea>
+
+        <h3>Scopes</h3>
+        <ul>
+          <li *ngFor="let scope of accessToScopes">{{scope}}</li>
+        </ul>
+      </div>
+
+      <div *ngIf="wrongPass">
+        <div class="alert alert-danger" role="alert">
+          Wrong password
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

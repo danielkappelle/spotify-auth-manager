@@ -1,0 +1,17 @@
+version: "2"
+services:
+    server:
+        image: spotify-auth-manager-server
+        restart: always
+        environment:
+          - MONGO_HOST=mongo
+        env_file:
+          - ./local.env
+        ports:
+            - "3003:3000"
+        depends_on:
+          - mongo
+    mongo:
+        image: mongo:latest
+        ports:
+          - "27018:27017"
